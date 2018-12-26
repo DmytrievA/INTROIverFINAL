@@ -12,7 +12,7 @@
                 <xs:all>
                    <!-- <xs:element name="state" type="rem:stateType"/>-->
                     <xs:element name="taskName" type="xs:string"/>
-                    <xs:element name="time" type="xs:dateTime"/>
+                    <xs:element name="time" type="xs:string"/>
                     <xs:element name="taskId">
                         <xs:simpleType>
                             <xs:restriction base="xs:unsignedShort">

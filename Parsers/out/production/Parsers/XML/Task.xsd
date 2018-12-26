@@ -29,9 +29,9 @@
             <xs:extension base="entity:Entity">
                 <xs:sequence>
                     <xs:element type="xs:string" name="title"/>
-                    <xs:element type="xs:date" name="date"/>
-                    <xs:element type="xs:time" name="time"/>
-                    <xs:element type="xs:time" name="duration" minOccurs="0"/>
+                    <xs:element type="xs:string" name="date"/>
+                    <xs:element type="xs:string" name="time"/>
+                    <xs:element type="xs:string" name="duration" minOccurs="0"/>
                     <xs:element type="xs:string" name="description"/>
                     <xs:element type="task:statusType" name="status"/>
                     <xs:element type="task:userType" name="user" maxOccurs="1"/>
@@ -45,7 +45,7 @@
         <xs:complexContent>
             <xs:extension base="entityUser:EntityUser">
                 <xs:sequence>
-                <xs:element type="user:userType" name="userValue"/>
+                <xs:element type="user:userType" name="userValue" minOccurs="0"/>
                 </xs:sequence>
             </xs:extension>
         </xs:complexContent>

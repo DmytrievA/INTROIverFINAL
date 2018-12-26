@@ -10,29 +10,7 @@
     <task:status id="1">
       <task:name>string</task:name>
     </task:status>
-    <task:user email="string">
-      <task:userValue email="string" role="string">
-        <user:name>string</user:name>
-        <!--Optional:-->
-        <user:surname>string</user:surname>
-        <user:email>string</user:email>
-        <user:login>string</user:login>
-        <user:password>stringst</user:password>
-        <!--Optional:-->
-        <user:gender>string</user:gender>
-        <user:memberOfGroups>
-          <!--0 to 10 repetitions:-->
-          <user:memberOfGroup>
-            <user:group id="1">
-              <gro:name>string</gro:name>
-            </user:group>
-            <user:groupRole id="1">
-              <user:groupRoleName>string</user:groupRoleName>
-            </user:groupRole>
-          </user:memberOfGroup>
-        </user:memberOfGroups>
-      </task:userValue>
-    </task:user>
+    <task:user email="string@koshka.com"/>
     <task:reminders>
       <!--1 to 5 repetitions:-->
       <task:reminder id="1">
