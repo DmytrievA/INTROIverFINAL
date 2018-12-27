@@ -32,6 +32,6 @@ public class JAXBMarshaller {
 
     public static void main(String[] arg) throws Exception {
         JAXBMarshaller jaxbMarshaller = new JAXBMarshaller();
-        jaxbMarshaller.marshal(Util.createTasks(), "src/jaxb.xml");
+        jaxbMarshaller.marshal(Util.createTasks(), "Parsers/src/jaxb.xml");
     }
 }

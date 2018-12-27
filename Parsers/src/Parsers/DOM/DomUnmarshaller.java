@@ -26,7 +26,7 @@ public class DomUnmarshaller  {
 
     public static void main(String[] arg) {
         DomUnmarshaller parser = new DomUnmarshaller();
-        TasksType tasks = parser.unmarshal("src/dom.xml");
+        TasksType tasks = parser.unmarshal("Parsers/src/dom.xml");
         System.out.println(tasks.toString());
     }
 

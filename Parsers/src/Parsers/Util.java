@@ -33,6 +33,7 @@ public class Util {
         reminders.addReminder(rem);
         task.setReminders(reminders);
         task.setDate("12/12/12");
+        task.setTime("10:40");
         task.setDuration("12:20");
         task.setTitle("Cursa4");
         task.setId(1);

@@ -31,9 +31,9 @@ public class StaxParser {
     private static boolean taskNameFlag;
     private static boolean timeReminderFlag;
     private static boolean taskIdFlag;
-
+private static boolean parentIsTask;
         public static void main(String[] args) {
-            String fileName = "src/stax.xml";
+            String fileName = "Parsers/src/stax.xml";
             TasksType tasks = parseXMLfile(fileName);
             // печатаем в консоль информацию по каждому студенту
             System.out.println(tasks.toString());
@@ -55,8 +55,8 @@ public class StaxParser {
                     switch (event) {
                         case XMLStreamConstants.START_ELEMENT:
                             // в зависимости от имени тега отмечаем нужный фалг
-                            if (reader.getLocalName().equals("ns5:task")) {
-
+                            if (reader.getLocalName().equals("task")) {
+                            	parentIsTask=true;
                                 task.setId(Integer.parseInt(reader.getAttributeValue(0)));
                             } else if (reader.getLocalName().equals("title")) {
                                 titleFlag = true;
@@ -81,16 +81,13 @@ public class StaxParser {
                                 task.getUser().setEmail(reader.getAttributeValue(0));
                             }
                             else if (reader.getLocalName().equals("reminder")) {
-
+                            	parentIsTask=false;
                                 rem.setId(Integer.parseInt(reader.getAttributeValue(0)));
-
                             }
                             else if (reader.getLocalName().equals("taskName")) {
                                 taskNameFlag = true;
                             }
-                            else if (reader.getLocalName().equals("ns4:time")) {
-                                timeReminderFlag = true;
-                            }
+                           
                             else if (reader.getLocalName().equals("taskId")) {
                                 taskIdFlag = true;
                             }
@@ -105,7 +102,11 @@ public class StaxParser {
                                 task.setDate(reader.getText());
                                 dateFlag = false;
                             } else  if (timeFlag) {
-                                task.setTime(reader.getText());
+                            	if(parentIsTask){
+                            		task.setTime(reader.getText());
+                            	}else {
+                            		rem.setTime(reader.getText());
+                            	}
                                 timeFlag = false;
                             }
                             else  if (durationFlag) {
@@ -124,10 +125,7 @@ public class StaxParser {
                                 rem.setTaskName(reader.getText());
                                 taskNameFlag = false;
                             }
-                            else  if (timeReminderFlag) {
-                                rem.setTime(reader.getText());
-                                timeReminderFlag = false;
-                            }
+                           
                             else  if (taskIdFlag) {
                                 rem.setTaskId(Integer.parseInt(reader.getText()));
                                 taskIdFlag = false;

@@ -80,7 +80,9 @@ public TasksType(){
     public String toString(){
         StringBuffer s = new StringBuffer();
         s.append("[\n");
-        task.forEach(el -> s.append(el.toString()).append("\n"));
+        for (TaskType taskType : task) {
+			s.append(taskType.toString()).append("\n");
+		}
         s.append("]");
         return s.toString();
     }

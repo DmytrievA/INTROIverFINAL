@@ -38,7 +38,7 @@ public class DomMarshaller  {
     public static void main(String[] arg) throws IOException {
         DomMarshaller parser = new DomMarshaller();
         try {
-            parser.marshal(Util.createTasks(), "src/dom.xml");
+            parser.marshal(Util.createTasks(), "Parsers/src/dom.xml");
         } catch (DatatypeConfigurationException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,7 @@ public class DomMarshaller  {
 
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI);
         try {
-            Schema schema = sf.newSchema(new File("src/XML/Tasks.xsd"));
+            Schema schema = sf.newSchema(new File("Parsers/src/XML/Tasks.xsd"));
             factory.setSchema(schema);
             factory.setNamespaceAware(true);
         } catch (SAXException e) {
@@ -66,10 +66,10 @@ public class DomMarshaller  {
             Document doc = builder.newDocument();
             Element tasksElement = doc.createElementNS(BS_NS, "tasks");
 
-
-            tasks.getTask().forEach(task -> {
-                tasksElement.appendChild(getTaskElement(task, doc));
-            });
+            for (TaskType oneTask : tasks.getTask()) {
+            	tasksElement.appendChild(getTaskElement(oneTask, doc));
+			}
+           
             doc.appendChild(tasksElement);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
@@ -100,9 +100,10 @@ public class DomMarshaller  {
         TaskElement.appendChild(UserElement);
         Element RemindersElement = doc.createElementNS(BS_NS_Task,"reminders");
 
-        task.getReminders().getReminder().forEach(reminder ->
-               RemindersElement.appendChild(getReminder(doc,BS_NS_Reminder,reminder))
-                );
+        for (ReminderType oneReminder : task.getReminders().getReminder()) {
+        	RemindersElement.appendChild(getReminder(doc,BS_NS_Reminder,oneReminder));
+		}
+        
         TaskElement.appendChild(RemindersElement);
         return TaskElement;
     }

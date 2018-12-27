@@ -24,7 +24,7 @@ public class JAXBUnmarshaller  {
 
 	public static void main(String[] arg) {
 		JAXBUnmarshaller jaxbUnmarshaller = new JAXBUnmarshaller();
-		TasksType tasks = jaxbUnmarshaller.unmarshal("src/jaxb.xml");
+		TasksType tasks = jaxbUnmarshaller.unmarshal("Parsers/src/jaxb.xml");
 		System.out.println(tasks.toString());
 	}
 }

@@ -81,7 +81,9 @@ reminder = new ArrayList<ReminderType>();
 public String toString(){
         StringBuffer s = new StringBuffer();
         s.append("[\n");
-        reminder.forEach(el -> s.append(el.toString()).append("\n"));
+        for (ReminderType reminderType : reminder) {
+			s.append(reminderType.toString()).append("\n");
+		}
         s.append("]");
         return s.toString();
 }
